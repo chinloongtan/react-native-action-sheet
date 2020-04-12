@@ -368,10 +368,10 @@ export default class ActionSheet extends React.Component {
     }
 
     onSelect && onSelect(index);
-    return this._animateOut();
+    return this._animateOut(index);
   };
 
-  _animateOut = (): boolean => {
+  _animateOut = (index): boolean => {
     const { isAnimating, overlayOpacity, sheetOpacity } = this.state;
 
     if (isAnimating) {
@@ -407,7 +407,7 @@ export default class ActionSheet extends React.Component {
           isAnimating: false,
         });
         if (typeof this._animateOutCallback === 'function') {
-          this._animateOutCallback();
+          this._animateOutCallback(index);
           this._animateOutCallback = null;
         }
       }
